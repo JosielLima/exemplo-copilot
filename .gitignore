@@ -6,3 +6,6 @@ node_modules/
 prisma/dev.db
 src/generated/
 next-env.d.ts
+
+# Instruções locais (não versionadas)
+.github/instructions/*.local.instructions.md
