@@ -127,3 +127,60 @@ Isso não estava no requisito original, mas é necessário para que o dark mode 
 4. Sem flash de tema errado ao carregar (SSR seguro)
 5. `npm run lint` sem erros
 6. `npm test` sem regressões nos testes existentes
+
+---
+
+## 7. Tasks
+
+### Etapa 1 — Contexto de Tema
+
+- [ ] **1.1** Criar `src/lib/contexts/theme-context.tsx`
+  - Definir tipo `Theme = 'light' | 'dark'`
+  - Criar `ThemeContext` com `createContext`
+  - Implementar `ThemeProvider`: ler `localStorage` no mount, aplicar/remover classe `dark` em `document.documentElement`, salvar no `localStorage` a cada mudança
+  - Detectar `prefers-color-scheme` como fallback na ausência de valor salvo
+  - Exportar `ThemeProvider` e hook `useTheme()`
+
+- [ ] **1.2** Atualizar `src/app/layout.tsx`
+  - Importar `ThemeProvider`
+  - Envolver `{children}` com `<ThemeProvider>`
+  - Adicionar `suppressHydrationWarning` ao elemento `<html>`
+
+**Verificação:** Ao inspecionar o DOM, a classe `dark` deve aparecer/sumir em `<html>` ao chamar o toggle via console.
+
+---
+
+### Etapa 2 — Botão de Toggle
+
+- [ ] **2.1** Criar `src/components/ui/theme-toggle.tsx`
+  - Importar `useTheme`
+  - Usar componente `Button` (variant `ghost`, size `icon`)
+  - Renderizar ícone `Sun` (tema dark → clique vai para light) ou `Moon` (tema light → clique vai para dark) do `lucide-react`
+  - Incluir `aria-label` acessível (`"Alternar tema"`)
+
+- [ ] **2.2** Atualizar `src/components/HeaderActions.tsx`
+  - Importar `ThemeToggle`
+  - Inserir `<ThemeToggle />` antes dos botões existentes
+
+**Verificação:** Botão visível no header; clicar alterna ícone e aplica/remove classe `dark` no `<html>`.
+
+---
+
+### Etapa 3 — Adaptar Cores da Interface
+
+- [ ] **3.1** Atualizar `src/app/main-content.tsx`
+  - Substituir `bg-neutral-50` → `bg-background`
+  - Substituir `bg-white` → `bg-card`
+  - Substituir `text-neutral-900` → `text-foreground`
+  - Substituir `border-neutral-200` → `border-border`
+
+**Verificação:** Em dark mode, fundo e texto da interface principal devem inverter corretamente sem cores "fantasmas" claras.
+
+---
+
+### Etapa 4 — Validação Final
+
+- [ ] **4.1** Verificar persistência: alternar tema, recarregar página, confirmar que o tema persiste
+- [ ] **4.2** Verificar fallback de OS: limpar `localStorage`, recarregar com OS em dark mode, confirmar dark mode ativo
+- [ ] **4.3** Executar `npm run lint` — sem erros
+- [ ] **4.4** Executar `npm test` — sem regressões
