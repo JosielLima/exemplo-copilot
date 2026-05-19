@@ -154,3 +154,5 @@ Para tarefas multi-etapas, declare um plano breve:
 Critérios de sucesso fortes permitem loop independente. Critérios fracos ("make it work") requerem clarificação constante.
 
 **Indicadores de sucesso:** Menos mudanças desnecessárias em diffs, menos rewrites por overcomplexity, e perguntas esclarecedoras vêm antes de implementação ao invés de após erros.
+
+[personalizacao.local.md]

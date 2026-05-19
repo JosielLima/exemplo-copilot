@@ -1,0 +1,1 @@
+Pensei em criar um Dark Mode usando darkMode: 'class' no arquivo do Tailwind. Fazer uma gestão de Estado via contexto global Para alternar a classe para Dark no HTML com uso do prefixo Dark e guardar a informação do estado no local story.
