@@ -155,4 +155,4 @@ Critérios de sucesso fortes permitem loop independente. Critérios fracos ("mak
 
 **Indicadores de sucesso:** Menos mudanças desnecessárias em diffs, menos rewrites por overcomplexity, e perguntas esclarecedoras vêm antes de implementação ao invés de após erros.
 
-[personalizacao.local.md]
+[personalizacao.local.md](personalizacao.local.md)
